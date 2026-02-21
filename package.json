@@ -1,0 +1,13 @@
+{
+  "name": "bibliotheque-casa",
+  "version": "1.0.0",
+  "description": "Site vitrine bibliothèque-casa (Node/Express + Front statique)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
