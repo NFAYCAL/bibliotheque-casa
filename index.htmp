@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>bibliothèque-casa</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <div class="brand">
+        <div class="brand__logo" aria-hidden="true">BC</div>
+        <div>
+          <h1 class="brand__name">bibliothèque-casa</h1>
+          <p class="brand__tag">Informatique • Cuisine • Sport • Voiture</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#catalogue">Catalogue</a>
+        <a href="#categories">Catégories</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <h2>Découvre, emprunte, apprends.</h2>
+          <p>
+            Une vitrine simple et moderne pour présenter des livres par catégories,
+            avec recherche et filtres. Parfait pour un projet Cloud Dev.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#catalogue">Voir le catalogue</a>
+            <a class="btn btn--ghost" href="#contact">Nous contacter</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat__value" id="statBooks">—</div>
+              <div class="stat__label">Livres</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value" id="statCategories">—</div>
+              <div class="stat__label">Catégories</div>
+            </div>
+            <div class="stat">
+              <div class="stat__value">Casablanca</div>
+              <div class="stat__label">Localisation</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__card" role="img" aria-label="Illustration bibliothèque">
+          <div class="hero__cardTop">
+            <span class="pill">Nouveautés</span>
+            <span class="pill pill--muted">Sélection</span>
+          </div>
+          <div class="hero__cardGrid" id="featuredGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h3>Catégories</h3>
+          <p>Explore les types de livres disponibles à la bibliothèque-casa.</p>
+        </div>
+
+        <div class="categoryGrid" id="categoryGrid"></div>
+      </div>
+    </section>
+
+    <section id="catalogue" class="section section--alt">
+      <div class="container">
+        <div class="section__head">
+          <h3>Catalogue</h3>
+          <p>Recherche, filtre et découvre les livres.</p>
+        </div>
+
+        <div class="controls">
+          <div class="search">
+            <input id="searchInput" type="search" placeholder="Rechercher un livre (titre, auteur, mots-clés)..." />
+          </div>
+
+          <div class="filters">
+            <button class="chip chip--active" data-filter="Tous">Tous</button>
+            <button class="chip" data-filter="Informatique">Informatique</button>
+            <button class="chip" data-filter="Cuisine">Cuisine</button>
+            <button class="chip" data-filter="Sport">Sport</button>
+            <button class="chip" data-filter="Voiture">Voiture</button>
+          </div>
+        </div>
+
+        <div class="grid" id="bookGrid"></div>
+
+        <div class="empty" id="emptyState" hidden>
+          <p>Aucun résultat. Essaie un autre mot-clé ou une autre catégorie.</p>
+          <button class="btn btn--primary" id="resetBtn">Réinitialiser</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h3>Contact</h3>
+          <p>Une demande ? Une suggestion de livre ? Écris-nous.</p>
+        </div>
+
+        <div class="contactCard">
+          <form id="contactForm" class="form">
+            <div class="form__row">
+              <label>
+                Nom
+                <input required name="name" placeholder="Votre nom" />
+              </label>
+              <label>
+                Email
+                <input required type="email" name="email" placeholder="ex: contact@exemple.com" />
+              </label>
+            </div>
+
+            <label>
+              Message
+              <textarea required name="message" rows="5" placeholder="Votre message..."></textarea>
+            </label>
+
+            <button class="btn btn--primary" type="submit">Envoyer</button>
+            <p class="form__hint" id="formHint" aria-live="polite"></p>
+          </form>
+
+          <div class="contactInfo">
+            <div class="infoBlock">
+              <h4>Adresse</h4>
+              <p>Casablanca, Maroc</p>
+            </div>
+            <div class="infoBlock">
+              <h4>Horaires</h4>
+              <p>Lun–Ven : 09:00–18:00<br/>Sam : 10:00–14:00</p>
+            </div>
+            <div class="infoBlock">
+              <h4>Services</h4>
+              <ul>
+                <li>Emprunt & réservation</li>
+                <li>Recommandations</li>
+                <li>Événements & ateliers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <p>© <span id="year"></span> bibliothèque-casa — Site vitrine (Front).</p>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__overlay" data-close="true"></div>
+    <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" aria-label="Fermer" data-close="true">✕</button>
+      <div class="modal__body">
+        <h3 id="modalTitle">—</h3>
+        <p class="muted" id="modalMeta">—</p>
+        <p id="modalDesc">—</p>
+        <div class="modal__tags" id="modalTags"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
