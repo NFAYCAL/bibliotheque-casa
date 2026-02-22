@@ -1,0 +1,13 @@
+{
+  "name": "bibliotheque-casa-premium",
+  "version": "1.0.0",
+  "description": "Bibliothèque-casa — site vitrine premium (Node/Express, sans base de données)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
