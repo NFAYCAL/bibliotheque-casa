@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>bibliothèque-casa</title>
+  <meta name="description" content="Bibliothèque-casa — vitrine premium : catalogue, catégories, magasins et statistiques." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#">
+        <span class="brand__mark" aria-hidden="true">BC</span>
+        <span class="brand__text">
+          <strong>bibliothèque-casa</strong>
+          <small>Vitrine premium • Catalogue & magasins</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Navigation">
+        <a href="#catalogue">Catalogue</a>
+        <a href="#magasins">Magasins</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="navBtn" id="navBtn" aria-label="Ouvrir le menu">☰</button>
+    </div>
+
+    <div class="mobileNav" id="mobileNav" hidden>
+      <a href="#catalogue">Catalogue</a>
+      <a href="#magasins">Magasins</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <div class="hero__kicker">
+            <span class="pill">Sans base de données</span>
+            <span class="pill pill--muted">Node.js • Express</span>
+          </div>
+
+          <h1>Une bibliothèque moderne, pensée pour Casablanca.</h1>
+          <p class="muted">
+            Catalogue par catégories, recherche instantanée, détails en popup,
+            et vitrine des magasins avec la ville et les horaires.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#catalogue">Explorer le catalogue</a>
+            <a class="btn" href="#magasins">Voir les magasins</a>
+          </div>
+
+          <div class="stats" id="stats">
+            <div class="stat">
+              <div class="stat__icon" data-ico="book"></div>
+              <div>
+                <div class="stat__value" id="statBooks">—</div>
+                <div class="stat__label">Livres</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat__icon" data-ico="store"></div>
+              <div>
+                <div class="stat__value" id="statStores">—</div>
+                <div class="stat__label">Magasins</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="stat__icon" data-ico="pin"></div>
+              <div>
+                <div class="stat__value" id="statCities">—</div>
+                <div class="stat__label">Villes</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cityLine" id="cityLine">—</div>
+        </div>
+
+        <div class="hero__panel">
+          <div class="panel__header">
+            <div>
+              <strong>Nouveautés</strong>
+              <div class="muted small">Sélection rapide par catégorie</div>
+            </div>
+            <span class="chip" id="chipAll">Tous</span>
+          </div>
+          <div class="quickCats" id="quickCats"></div>
+          <div class="featured" id="featured"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalogue">
+      <div class="container">
+        <div class="section__head">
+          <h2>Catalogue</h2>
+          <p class="muted">Recherche + filtres. Clique sur un livre pour voir les détails.</p>
+        </div>
+
+        <div class="controls">
+          <div class="searchBox">
+            <span class="searchBox__icon" aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="Rechercher : Azure, recettes, mobilité, entretien..." />
+          </div>
+
+          <div class="filters" id="filters">
+            <!-- chips -->
+          </div>
+        </div>
+
+        <div class="grid" id="bookGrid"></div>
+
+        <div class="empty" id="emptyState" hidden>
+          <div>
+            <strong>Aucun résultat</strong>
+            <div class="muted">Essaie un autre mot-clé ou réinitialise les filtres.</div>
+          </div>
+          <button class="btn btn--primary" id="resetBtn">Réinitialiser</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="magasins">
+      <div class="container">
+        <div class="section__head">
+          <h2>Magasins</h2>
+          <p class="muted">Nos points de vente et leurs horaires.</p>
+        </div>
+
+        <div class="storeGrid" id="storeGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section__head">
+          <h2>Contact</h2>
+          <p class="muted">Formulaire simulé (front only).</p>
+        </div>
+
+        <div class="contactCard">
+          <form class="form" id="contactForm">
+            <div class="row2">
+              <label>
+                <span>Nom</span>
+                <input name="name" required placeholder="Votre nom" />
+              </label>
+              <label>
+                <span>Email</span>
+                <input name="email" type="email" required placeholder="contact@exemple.com" />
+              </label>
+            </div>
+            <label>
+              <span>Message</span>
+              <textarea name="message" required rows="5" placeholder="Votre message..."></textarea>
+            </label>
+            <button class="btn btn--primary" type="submit">Envoyer</button>
+            <div class="muted small" id="formHint"></div>
+          </form>
+
+          <div class="contactInfo">
+            <div class="info">
+              <div class="info__icon" data-ico="pin"></div>
+              <div>
+                <strong>Ville</strong>
+                <div class="muted">Casablanca, Maroc</div>
+              </div>
+            </div>
+            <div class="info">
+              <div class="info__icon" data-ico="clock"></div>
+              <div>
+                <strong>Horaires</strong>
+                <div class="muted">Lun–Ven 09:00–18:00 • Sam 10:00–14:00</div>
+              </div>
+            </div>
+            <div class="info">
+              <div class="info__icon" data-ico="spark"></div>
+              <div>
+                <strong>Services</strong>
+                <div class="muted">Réservation • Conseils • Sélection premium</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <span>© <span id="year"></span> bibliothèque-casa</span>
+          <span class="muted">• Node/Express • In-memory • Premium UI</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__overlay" data-close="true"></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" data-close="true" aria-label="Fermer">✕</button>
+      <div class="modal__cover" id="modalCover"></div>
+      <div class="modal__content">
+        <h3 id="modalTitle">—</h3>
+        <div class="muted small" id="modalMeta">—</div>
+        <p id="modalDesc">—</p>
+        <div class="tagRow" id="modalTags"></div>
+        <div class="modal__actions">
+          <button class="btn btn--primary" id="reserveBtn">Réserver</button>
+          <button class="btn" data-close="true">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
