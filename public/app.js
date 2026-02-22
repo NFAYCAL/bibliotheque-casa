@@ -351,6 +351,27 @@ async function load(){
   setIconContainers();
 }
 
+async function load(){
+
+  cache.categories = CATEGORIES;
+  cache.books = BOOKS;
+  cache.stores = STORES;
+
+  const cities = [...new Set(STORES.map(s => s.city))];
+
+  els.statBooks.textContent = BOOKS.length;
+  els.statStores.textContent = STORES.length;
+  els.statCities.textContent = cities.length;
+  els.cityLine.textContent = `Villes : ${cities.join(" • ")}`;
+
+  buildFilterChips();
+  renderQuickCats();
+  renderFeatured();
+  renderBooks();
+  renderStores();
+  setIconContainers();
+}
+
 wireEvents();
 load().catch(err => {
   console.error(err);
