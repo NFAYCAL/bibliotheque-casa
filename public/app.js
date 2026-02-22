@@ -1,3 +1,44 @@
+// ==============================
+// DONNÉES LOCALES (STATIQUE)
+// ==============================
+
+const CATEGORIES = [
+  { id: "informatique", name: "Informatique", icon: "code" },
+  { id: "cuisine", name: "Cuisine", icon: "chef" },
+  { id: "sport", name: "Sport", icon: "dumbbell" },
+  { id: "voiture", name: "Voiture", icon: "car" }
+];
+
+const STORES = [
+  { city: "Casablanca", name: "BC Casa Centre", address: "Centre-ville", hours: "09:00–18:00" },
+  { city: "Casablanca", name: "BC Maârif", address: "Maârif", hours: "10:00–19:00" },
+  { city: "Casablanca", name: "BC Ain Diab", address: "Corniche", hours: "10:00–20:00" }
+];
+
+const BOOKS = [
+  {
+    id: "it-1",
+    title: "Azure pour les développeurs",
+    author: "M. El Idrissi",
+    category: "informatique",
+    year: 2025,
+    level: "Intermédiaire",
+    tags: ["Cloud", "CI/CD"],
+    desc: "Guide pratique pour déployer et architecturer des apps cloud.",
+    cover: "gradient-blue"
+  },
+  {
+    id: "cook-1",
+    title: "Cuisine marocaine moderne",
+    author: "N. Ait Lahcen",
+    category: "cuisine",
+    year: 2022,
+    level: "Tous niveaux",
+    tags: ["Recettes", "Maroc"],
+    desc: "Recettes revisitées et astuces pratiques.",
+    cover: "gradient-orange"
+  }
+];
 const els = {
   year: document.getElementById("year"),
   navBtn: document.getElementById("navBtn"),
